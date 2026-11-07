@@ -3,18 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>اختبار تنظيم وعمارة الحاسوب</title>
+<title>جامعة دجلة | اختبارات هندسة تقنيات الحاسوب</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef1f4;--card:#fff;--ink:#14202b;--mute:#5b6b7a;--line:#d5dce3;--acc:#0b7a62;--acc-d:#095f4c;--bad:#b3261e;--good:#0b7a62;--gold:#b7791f}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1a22;--card:#17242e;--ink:#e8eef3;--mute:#93a3b1;--line:#2b3c49;--acc:#2fc4a0;--acc-d:#58d6b9;--bad:#ff8a80;--good:#2fc4a0;--gold:#e8b44f}}
+:root{--bg:#eef1f4;--card:#fff;--ink:#14202b;--mute:#5b6b7a;--line:#d5dce3;--acc:#0b7a62;--acc-d:#095f4c;--bad:#b3261e;--good:#0b7a62;--gold:#b7791f;--navy:#0d2233}
+@media (prefers-color-scheme:dark){:root{--bg:#0b141b;--card:#15222c;--ink:#e8eef3;--mute:#93a3b1;--line:#2b3c49;--acc:#2fc4a0;--acc-d:#58d6b9;--bad:#ff8a80;--good:#2fc4a0;--gold:#e8b44f}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;line-height:1.7}
-.wrap{max-width:760px;margin:0 auto;padding:20px 16px 60px}
-h1{font-size:26px;margin:8px 0 4px}h2{font-size:19px;margin:0 0 12px}
-.sub{color:var(--mute);margin:0 0 20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:16px}
+.hero{background:linear-gradient(135deg,#0d2233 0%,#103a4a 60%,#0b5a4c 100%);color:#fff;position:relative;overflow:hidden;border-bottom:4px solid #e0a93b}
+.hero::before{content:"";position:absolute;inset:0;opacity:.13;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:34px 34px;-webkit-mask-image:linear-gradient(to left,#000,transparent 85%);mask-image:linear-gradient(to left,#000,transparent 85%)}
+.hero .in{position:relative;max-width:860px;margin:0 auto;padding:26px 18px 28px;display:flex;gap:16px;align-items:center}
+.logo{flex:none;width:62px;height:62px;border-radius:14px;border:2px solid #e0a93b;display:grid;place-items:center;font-size:30px;background:rgba(255,255,255,.08)}
+.hero h1{margin:0;font-size:25px;line-height:1.35}
+.hero p{margin:2px 0 0;color:#cfe3ea;font-size:15px}
+.hero .tag{display:inline-block;margin-top:8px;background:#e0a93b;color:#241a05;font-weight:700;font-size:13px;padding:1px 12px;border-radius:99px}
+.wrap{max-width:860px;margin:0 auto;padding:22px 16px 40px}
+h2{font-size:19px;margin:0 0 12px}
+.sub{color:var(--mute);margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
 input[type=text]{width:100%;font:inherit;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
 input[type=text]:focus,button:focus-visible{outline:3px solid var(--acc);outline-offset:1px}
 button{font:inherit;cursor:pointer;border-radius:8px;border:1.5px solid var(--acc);background:var(--acc);color:#fff;padding:10px 20px;font-weight:500}
@@ -26,6 +33,21 @@ button.danger{background:transparent;border-color:var(--bad);color:var(--bad)}
 button:disabled{opacity:.4;cursor:not-allowed}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.sp{flex:1}
 .hide{display:none!important}
+.steps{display:flex;gap:8px;flex-wrap:wrap}
+.stg{flex:1;min-width:110px;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);padding:12px 8px;text-align:center}
+.stg:hover{border-color:var(--acc);background:var(--bg)}
+.stg.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+@media (prefers-color-scheme:dark){.stg.on{color:#06231c}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.sj{position:relative;text-align:right;background:var(--card);color:var(--ink);border:1.5px solid var(--line);padding:16px;border-radius:12px;display:block;width:100%;transition:transform .15s,border-color .15s}
+.sj .ic{font-size:30px;display:block;line-height:1.2}
+.sj b{display:block;font-size:17px;margin-top:6px}
+.sj small{display:block;color:var(--mute);direction:ltr;text-align:right;font-weight:400}
+.sj .bd{position:absolute;top:12px;left:12px;font-size:12px;padding:1px 10px;border-radius:99px;background:var(--acc);color:#fff;font-weight:500}
+@media (prefers-color-scheme:dark){.sj .bd{color:#06231c}}
+.sj:hover:not(.soon){transform:translateY(-3px);border-color:var(--acc);background:var(--card)}
+.sj.soon{opacity:.6;cursor:not-allowed}
+.sj.soon .bd{background:var(--line);color:var(--mute)}
 .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:8px 0 18px}
 .bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .2s}
 .meta{display:flex;justify-content:space-between;color:var(--mute);font-size:14px}
@@ -34,7 +56,6 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .opt:hover{background:var(--bg);border-color:var(--acc)}
 .opt b{min-width:22px;color:var(--mute)}
 .opt.sel{border-color:var(--acc);background:var(--bg);box-shadow:inset 3px 0 0 var(--acc)}
-.opt.ok{border-color:var(--good)}.opt.no{border-color:var(--bad)}
 .score{font-size:54px;font-weight:700;line-height:1.1;margin:4px 0}
 .score small{font-size:22px;color:var(--mute);font-weight:400}
 table{width:100%;border-collapse:collapse;font-size:15px}
@@ -47,17 +68,63 @@ tr.me{background:var(--bg)}tr.me td{font-weight:700}
 .rev{direction:ltr;text-align:left;border-top:1px solid var(--line);padding:12px 0;font-size:15px}
 .rev .t{font-weight:500}.rev .g{color:var(--good)}.rev .b{color:var(--bad)}
 .err{color:var(--bad);font-size:14px;min-height:20px;margin-top:6px}
+.chip{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:0 12px;font-size:14px;color:var(--mute)}
+.mode{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:16px}
+.mode button{text-align:right;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:18px;font-weight:400}
+.mode button:hover:not(:disabled){border-color:var(--acc);background:var(--card);transform:translateY(-3px)}
+.mode button.on{border-color:var(--acc);box-shadow:inset 0 -3px 0 var(--acc)}
+.mode .ic{font-size:30px;display:block}.mode b{display:block;font-size:18px;margin-top:4px}.mode span.d{color:var(--mute);font-size:14px}
+.note-i{display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line);padding:12px 0}
+.note-i:first-child{border-top:0}
+a.btn{font:inherit;text-decoration:none;border-radius:8px;border:1.5px solid var(--acc);background:var(--acc);color:#fff;padding:8px 16px;font-weight:500}
+a.btn.ghost{background:transparent;color:var(--acc)}
+@media (prefers-color-scheme:dark){a.btn:not(.ghost){color:#06231c}}
+footer{text-align:center;color:var(--mute);font-size:14px;padding:6px 0 28px;direction:ltr}
+footer b{color:var(--ink)}
+@media (max-width:520px){.hero h1{font-size:20px}.logo{width:50px;height:50px;font-size:24px}}
 </style>
 </head>
 <body>
-<div class="wrap">
+<header class="hero"><div class="in">
+  <div class="logo">🎓</div>
+  <div>
+    <h1>طلاب جامعة دجلة</h1>
+    <p>هندسة تقنيات الحاسوب – المرحلة الثانية</p>
+    <span class="tag">الكورس الأول</span>
+  </div>
+</div></header>
 
+<div class="wrap">
 <div id="cfgNote" class="note hide">⚠ قاعدة البيانات المشتركة غير مفعّلة: النتائج تُحفظ في هذا المتصفح فقط ولن يراها بقية الطلاب. اضبط <code>FIREBASE_URL</code> في أعلى السكربت.</div>
 
-<!-- بداية -->
-<section id="vStart">
-  <h1>اختبار تنظيم وعمارة الحاسوب</h1>
-  <p class="sub">100 سؤال اختيار من متعدد. تقدر تنهي الاختبار في أي وقت، والنتيجة تُحسب على الأسئلة اللي جاوبتها.</p>
+<!-- الرئيسية: المرحلة والمادة -->
+<section id="vHome">
+  <div class="card">
+    <h2>1) اختر المرحلة</h2>
+    <div class="steps" id="stages"></div>
+  </div>
+  <div class="card hide" id="subjCard">
+    <h2>2) اختر المادة</h2>
+    <div class="grid" id="subjects"></div>
+  </div>
+</section>
+
+<!-- خيارات المادة -->
+<section id="vMode" class="hide">
+  <div class="row" style="margin-bottom:10px"><button class="ghost" id="btnBackHome">→ رجوع للمواد</button></div>
+  <h2 id="mTitle" style="font-size:24px;margin-bottom:12px"></h2>
+  <div class="mode">
+    <button id="mNotes"><span class="ic">📘</span><b>الملزمة</b><span class="d" id="mNotesD"></span></button>
+    <button id="mQuiz"><span class="ic">📝</span><b>الاختبار</b><span class="d" id="mQuizD"></span></button>
+  </div>
+  <div class="card hide" id="notesCard"><h2>الملازم</h2><div id="notesList"></div></div>
+</section>
+
+<!-- بداية الاختبار -->
+<section id="vStart" class="hide">
+  <div class="row" style="margin-bottom:10px"><button class="ghost" id="btnHome">→ رجوع</button></div>
+  <h2 id="sTitle" style="font-size:24px;margin-bottom:4px"></h2>
+  <p class="sub" id="sSub"></p>
   <div class="card">
     <label for="name"><b>اسمك</b></label>
     <input id="name" type="text" maxlength="40" autocomplete="name" placeholder="اكتب اسمك الكامل">
@@ -87,7 +154,8 @@ tr.me{background:var(--bg)}tr.me td{font-weight:700}
 <!-- النتيجة -->
 <section id="vResult" class="hide">
   <div class="card">
-    <div id="rName" class="sub" style="margin:0"></div>
+    <span class="chip" id="rSubj"></span>
+    <div id="rName" class="sub" style="margin:8px 0 0"></div>
     <div class="score"><span id="rScore"></span> <small id="rOut"></small></div>
     <div id="rDetail" class="sub" style="margin:0"></div>
     <div id="rRank" style="margin-top:10px;font-weight:700"></div>
@@ -100,42 +168,112 @@ tr.me{background:var(--bg)}tr.me td{font-weight:700}
   <div class="row">
     <button id="btnAgain">اختبار جديد</button>
     <button class="ghost" id="btnRev">مراجعة إجاباتي</button>
+    <button class="ghost" id="btnMenu">كل المواد</button>
   </div>
   <div id="review" class="card hide" style="margin-top:16px"></div>
 </section>
-
 </div>
-<script>
-/* ===== الإعداد =====
-   لجعل لوحة الترتيب مشتركة بين كل الطلاب ضع رابط Firebase Realtime Database هنا
-   مثال: "https://my-quiz-default-rtdb.firebaseio.com"  (بدون / في الآخر) */
-const FIREBASE_URL = "https://taxi-d301e-default-rtdb.firebaseio.com";
-const TOTAL_NODE = "results";
 
-const QS = [{"q": "What is the primary function of a computer system?", "o": ["Storing data permanently", "Accepting input, processing data, and producing output", "Connecting to the internet", "Displaying graphics"], "a": 1}, {"q": "Which of the following is NOT a component of a computer system?", "o": ["Hardware", "Software", "Data", "User"], "a": 3}, {"q": "The \"brain\" of the computer, responsible for executing instructions, is the:", "o": ["Main Memory", "Arithmetic Logic Unit (ALU)", "Control Unit (CU)", "Central Processing Unit (CPU)"], "a": 3}, {"q": "Which generation of computers used Vacuum Tubes as their defining technology?", "o": ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"], "a": 0}, {"q": "Transistors were the defining technology of which computer generation?", "o": ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"], "a": 1}, {"q": "Integrated Circuits (ICs) were introduced in the:", "o": ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"], "a": 2}, {"q": "The era of Personal Computing (PCs) began with the advent of:", "o": ["Vacuum Tubes", "Transistors", "Integrated Circuits (ICs)", "Microprocessors"], "a": 3}, {"q": "Fifth Generation computers are primarily associated with:", "o": ["Microprocessors", "Artificial Intelligence and Quantum Computing", "Integrated Circuits", "Vacuum Tubes"], "a": 1}, {"q": "A desktop PC is an example of a:", "o": ["Multi-User System", "Single-User System", "Supercomputer", "Mainframe"], "a": 1}, {"q": "A high-performance computer designed for a single user doing technical work is a:", "o": ["Mainframe", "Workstation", "Minicomputer", "Supercomputer"], "a": 1}, {"q": "Which type of computer is designed to support hundreds or thousands of users simultaneously for high-volume transactions?", "o": ["Workstation", "Minicomputer", "Mainframe", "Supercomputer"], "a": 2}, {"q": "The fastest and most powerful computers, used for weather forecasting and scientific modeling, are:", "o": ["Mainframes", "Supercomputers", "Workstations", "Minicomputers"], "a": 1}, {"q": "Which component is responsible for controlling the operation of the processor?", "o": ["Arithmetic and Logic Unit (ALU)", "Registers", "Control Unit (CU)", "Main Memory"], "a": 2}, {"q": "The part of the CPU that performs mathematical calculations is the:", "o": ["Control Unit (CU)", "Instruction Register (IR)", "Arithmetic and Logic Unit (ALU)", "Memory Address Register (MAR)"], "a": 2}, {"q": "What is the function of CPU registers?", "o": ["Store the operating system", "Provide long-term storage for files", "Hold data and control information temporarily during execution", "Connect the CPU to I/O devices"], "a": 2}, {"q": "Main Memory (RAM) is characterized as:", "o": ["Non-volatile", "Volatile", "Very slow", "Read-only"], "a": 1}, {"q": "What is the role of I/O Modules?", "o": ["Execute program instructions", "Perform arithmetic calculations", "Interface between the CPU/Memory and external devices", "Control the system clock"], "a": 2}, {"q": "The pathway that provides communication among the CPU, Main Memory, and I/O modules is the:", "o": ["Instruction Register", "System Interconnection Structure (Bus)", "Arithmetic Logic Unit", "Control Unit"], "a": 1}, {"q": "The foundational design for most modern computers, based on the stored- program concept, is:", "o": ["Harvard Architecture", "Von Neumann Architecture", "Modified Harvard Architecture", "RISC Architecture"], "a": 1}, {"q": "A key feature of Von Neumann Architecture is:", "o": ["Separate memories for instructions and data", "A single, unified memory for instructions and data", "The absence of a CPU", "Parallel processing only"], "a": 1}, {"q": "Which architecture uses separate buses for instructions and data?", "o": ["Von Neumann Architecture", "Harvard Architecture", "Both Von Neumann and Harvard", "Neither Von Neumann nor Harvard"], "a": 1}, {"q": "The \"Von Neumann Bottleneck\" refers to:", "o": ["The slow speed of the ALU", "The limitation of having a single bus for both instructions and data", "The volatility of main memory", "The complexity of the Control Unit"], "a": 1}, {"q": "Modern Intel and AMD processors typically use a:", "o": ["Pure Von Neumann Architecture", "Pure Harvard Architecture", "Modified Harvard Architecture", "RISC Architecture"], "a": 2}, {"q": "In a Modified Harvard Architecture, separation is achieved at the level of:", "o": ["Main Memory (RAM)", "Secondary Storage (HDD/SSD)", "CPU Caches (L1 Cache)", "System Bus"], "a": 2}, {"q": "Computer Architecture primarily deals with:", "o": ["The physical implementation of the system", "Attributes visible to the programmer", "The brand of the hardware", "The cost of the components"], "a": 1}, {"q": "The Instruction Set Architecture (ISA) is part of:", "o": ["Computer Organization", "Computer Architecture", "Computer Manufacturing", "Computer Networking"], "a": 1}, {"q": "Computer Organization deals with:", "o": ["The logical execution of a program", "The operational units and their interconnections", "The user interface design", "The programming language used"], "a": 1}, {"q": "The Stored-Program Concept means:", "o": ["Programs are stored on a hard drive", "Instructions and data are stored together in main memory", "Instructions are stored in the ALU", "Data is stored in the Control Unit"], "a": 1}, {"q": "The cycle of fetching, decoding, and executing instructions is:", "o": ["Sequential Instruction Processing", "Parallel Processing", "Pipelining", "Multitasking"], "a": 0}, {"q": "Which register holds the address of the next instruction to be executed?", "o": ["Instruction Register (IR)", "Memory Address Register (MAR)", "Program Counter (PC)", "Memory Buffer Register (MBR)"], "a": 2}, {"q": "The register that holds the instruction currently being executed is the:", "o": ["Program Counter (PC)", "Memory Address Register (MAR)", "Instruction Register (IR)", "Memory Buffer Register (MBR)"], "a": 2}, {"q": "The ALU performs which of the following types of operations?", "o": ["Only arithmetic operations", "Only logical operations", "Both arithmetic and logical operations", "Only data fetch operations"], "a": 2}, {"q": "Which component generates the control signals that coordinate the computer's operation?", "o": ["Arithmetic and Logic Unit (ALU)", "Main Memory", "Control Unit (CU)", "System Bus"], "a": 2}, {"q": "During a memory read operation, which register holds the data after it is fetched from memory?", "o": ["Memory Address Register (MAR)", "Program Counter (PC)", "Instruction Register (IR)", "Memory Buffer Register (MBR)"], "a": 3}, {"q": "The Memory Address Register (MAR) holds:", "o": ["The data to be written to memory", "The instruction being decoded", "The address of a memory location", "The result of an ALU operation"], "a": 2}, {"q": "What is the first step in the Fetch-Decode-Execute cycle?", "o": ["Decode the instruction", "Execute the instruction", "Fetch the instruction", "Increment the Program Counter"], "a": 2}, {"q": "The system bus is composed of three types of buses. They are:", "o": ["Data, Address, Control", "Input, Output, Processing", "Memory, CPU, I/O", "Primary, Secondary, Cache"], "a": 0}, {"q": "The bus that carries the memory address from the CPU is the:", "o": ["Data Bus", "Address Bus", "Control Bus", "System Bus"], "a": 1}, {"q": "The width of the Address Bus determines the:", "o": ["Speed of the CPU", "Amount of data transferred at once", "Maximum addressable memory", "Number of I/O devices"], "a": 2}, {"q": "The bus that is bidirectional is the:", "o": ["Address Bus", "Data Bus", "Control Bus", "Both b and c"], "a": 3}, {"q": "A READ signal is sent from the CPU to memory via the:", "o": ["Data Bus", "Address Bus", "Control Bus", "System Clock"], "a": 2}, {"q": "Software that manages computer hardware and provides a platform for applications is:", "o": ["Application Software", "System Software", "Utility Software", "Translator Software"], "a": 1}, {"q": "An example of System Software is:", "o": ["Microsoft Word", "Google Chrome", "Windows Operating System", "A video game"], "a": 2}, {"q": "A program that converts high-level code into machine code all at once is a(n):", "o": ["Interpreter", "Assembler", "Compiler", "Operating System"], "a": 2}, {"q": "A program that converts and executes one line of source code at a time is a(n):", "o": ["Compiler", "Assembler", "Interpreter", "Linker"], "a": 2}, {"q": "Programs like web browsers and word processors are classified as:", "o": ["System Software", "Application Software", "Utility Software", "Translator Software"], "a": 1}, {"q": "Which addressing mode has the operand value as part of the instruction itself?", "o": ["Direct Addressing", "Register Addressing", "Immediate Addressing", "Indirect Addressing"], "a": 2}, {"q": "In the instruction ADD 5, the addressing mode used is:", "o": ["Direct Addressing", "Register Addressing", "Immediate Addressing", "Indirect Addressing"], "a": 2}, {"q": "In which addressing mode does the instruction contain the exact memory address of the operand?", "o": ["Immediate Addressing", "Direct Addressing", "Register Addressing", "Indirect Addressing"], "a": 1}, {"q": "The instruction LOAD R5 uses which addressing mode?", "o": ["Immediate Addressing", "Direct Addressing", "Register Addressing", "Indirect Addressing"], "a": 2}, {"q": "The fastest addressing mode(s) for the CPU to access data is/are:", "o": ["Immediate and Direct", "Direct and Indirect", "Immediate and Register", "Register and Indirect"], "a": 2}, {"q": "An addressing mode that requires two memory accesses to get the operand is:", "o": ["Immediate Addressing", "Direct Addressing", "Register Addressing", "Indirect Addressing"], "a": 3}, {"q": "The part of a machine instruction that specifies the operation to be performed is the:", "o": ["Operand", "Opcode", "Address", "Register"], "a": 1}, {"q": "In a 16-bit instruction 0010 0011 0000 0101, the Opcode is:", "o": ["0010", "0011", "0000 0101", "The entire instruction"], "a": 0}, {"q": "The mnemonic AND R1, R2, R3 means:", "o": ["Add R2 and R3 and store in R1", "Subtract R3 from R2 and store in R1", "Perform bitwise AND on R2 and R3, store result in R1", "Perform bitwise OR on R2 and R3, store result in R1"], "a": 2}, {"q": "The mnemonic SUB R1, R2, R3 means:", "o": ["R1 = R2 + R3", "R1 = R2 AND R3", "R1 = R2 - R3", "R1 = R2 OR R3"], "a": 2}, {"q": "An instruction that changes the sequence of execution by modifying the Program Counter is a:", "o": ["Data Processing Instruction", "Logic Instruction", "Control Instruction (e.g., JUMP)", "I/O Instruction"], "a": 2}, {"q": "Which of the following is a logical operation?", "o": ["ADD", "SUB", "AND", "JUMP"], "a": 2}, {"q": "If R2 = 1010 and R3 = 1100, what is the result of AND R1, R2, R3?", "o": ["1110", "1000", "0110", "1010"], "a": 1}, {"q": "If R2 = 1010 and R3 = 1100, what is the result of OR R1, R2, R3?", "o": ["1110", "1000", "0110", "1010"], "a": 0}, {"q": "The Control Unit's operation is synchronized by the:", "o": ["ALU", "System Clock", "Data Bus", "Main Memory"], "a": 1}, {"q": "A Hardwired Control Unit is:", "o": ["Easy to modify", "Implemented with software", "Fast but inflexible", "Slow but flexible"], "a": 2}, {"q": "A Microprogrammed Control Unit uses a special memory called:", "o": ["Cache", "RAM", "Control Store", "Register File"], "a": 2}, {"q": "The binary code for instructions is stored in:", "o": ["The ALU", "The Control Unit", "Main Memory", "The System Bus"], "a": 2}, {"q": "The component that acts as an interface for data transfer between the CPU and an I/O device is the:", "o": ["MAR", "MDR", "I/O Module", "System Clock"], "a": 2}, {"q": "Which register in the CPU is used for communication with an I/O device?", "o": ["Program Counter (PC)", "Instruction Register (IR)", "I/O Buffer Register (I/OBR)", "Memory Address Register (MAR)"], "a": 2}, {"q": "The performance of a computer is largely determined by the speed of the:", "o": ["Printer", "Monitor", "CPU and Memory", "Keyboard"], "a": 2}, {"q": "The type of memory that loses its contents when power is turned off is:", "o": ["ROM", "RAM", "SSD", "Hard Disk"], "a": 1}, {"q": "A computer's main memory is typically made of:", "o": ["SRAM", "DRAM", "ROM", "Cache"], "a": 1}, {"q": "Cache memory is used to:", "o": ["Increase main memory capacity", "Store data permanently", "Speed up access to frequently used data by the CPU", "Connect to I/O devices"], "a": 2}, {"q": "In the Von Neumann architecture, the same bus is used to transfer:", "o": ["Only instructions", "Only data", "Both instructions and data", "Only addresses"], "a": 2}, {"q": "The Harvard Architecture is often used in:", "o": ["Desktop PCs", "Servers", "Microcontrollers and DSPs", "Laptops"], "a": 2}, {"q": "The ability to run multiple programs apparently simultaneously is called:", "o": ["Multiprocessing", "Multitasking", "Multithreading", "Multiprogramming"], "a": 1}, {"q": "The set of instructions that a CPU can execute is known as its:", "o": ["Computer Architecture", "Computer Organization", "Instruction Set Architecture (ISA)", "Control System"], "a": 2}, {"q": "Which of the following is a status flag set by the ALU?", "o": ["Opcode", "Operand", "Zero Flag (Z)", "Address"], "a": 2}, {"q": "The Zero Flag (Z) is set when the result of an operation is:", "o": ["Positive", "Negative", "Zero", "An overflow"], "a": 2}, {"q": "The Carry Flag (C) is useful after which type of operation?", "o": ["Logical AND", "Logical OR", "Arithmetic Addition/Subtraction", "Data Move"], "a": 2}, {"q": "The Overflow Flag (V) is used for:", "o": ["Unsigned arithmetic", "Logical operations", "Signed arithmetic", "Data transfer operations"], "a": 2}, {"q": "The step where the Control Unit figures out what the instruction means is called:", "o": ["Fetch", "Decode", "Execute", "Writeback"], "a": 1}, {"q": "The final step of an instruction cycle, where results are stored, is often called:", "o": ["Fetch", "Decode", "Execute", "Writeback"], "a": 3}, {"q": "A bus that allows data to travel in both directions is called:", "o": ["Unidirectional", "Bidirectional", "Simplex", "Half-duplex"], "a": 1}, {"q": "The width of a 64-bit data bus means it can transfer:", "o": ["64 bytes at a time", "64 bits at a time", "64 million bits per second", "64 addresses at a time"], "a": 1}, {"q": "The primary memory in a computer system is also known as:", "o": ["Secondary Storage", "RAM", "Hard Disk", "USB Drive"], "a": 1}, {"q": "Which of the following is a non-volatile memory?", "o": ["DRAM", "SRAM", "Cache", "ROM"], "a": 3}, {"q": "A device driver is a type of:", "o": ["Application Software", "System Software", "Utility Software", "Translator Software"], "a": 1}, {"q": "The instruction JUMP 4000 changes the value in the:", "o": ["Instruction Register (IR)", "Memory Address Register (MAR)", "Program Counter (PC)", "Memory Buffer Register (MBR)"], "a": 2}, {"q": "In the instruction ADD (200), the parentheses indicate the use of:", "o": ["Immediate Addressing", "Direct Addressing", "Register Addressing", "Indirect Addressing"], "a": 3}, {"q": "Which of the following is an advantage of Immediate Addressing?", "o": ["Flexibility", "No memory access for the operand", "Allows for large address spaces", "Requires only one memory access"], "a": 1}, {"q": "The binary value 0101 in an opcode field might be decoded as:", "o": ["ADD", "SUB", "AND", "JUMP"], "a": 2}, {"q": "The binary value 0001 in an opcode field might be decoded as:", "o": ["ADD", "SUB", "AND", "OR"], "a": 1}, {"q": "The part of the CPU that contains the ALU and registers is sometimes called the:", "o": ["Control Unit", "Datapath", "System Bus", "I/O Module"], "a": 1}, {"q": "The concept that a computer can be reprogrammed for different tasks by loading new software is enabled by the:", "o": ["Speed of the CPU", "Stored-Program Concept", "Size of the Hard Disk", "Presence of the System Bus"], "a": 1}, {"q": "Which component is NOT typically part of the CPU?", "o": ["Control Unit (CU)", "Arithmetic Logic Unit (ALU)", "Registers", "Main Memory (RAM)"], "a": 3}, {"q": "The fetch cycle begins by loading the address from the PC into the:", "o": ["IR", "MAR", "MDR", "ALU"], "a": 1}, {"q": "The time taken to complete one fetch-decode-execute cycle is determined by the:", "o": ["CPU Clock Speed", "Monitor Refresh Rate", "Hard Disk Speed", "Keyboard Input Speed"], "a": 0}, {"q": "A 32-bit address bus can address how many unique memory locations?", "o": ["32", "2^32 (4,294,967,296)", "32 billion", "1024"], "a": 1}, {"q": "The primary goal of using a Harvard Architecture is to:", "o": ["Reduce cost", "Simplify programming", "Allow parallel instruction and data access", "Use a unified memory"], "a": 2}, {"q": "In a processor with a Modified Harvard Architecture, the main memory is typically:", "o": ["Split into Instruction RAM and Data RAM", "Unified for instructions and data", "Non-existent", "Only for I/O operations"], "a": 1}, {"q": "The instruction LOAD 100 (which loads the value 100 into a register) uses:", "o": ["Direct Addressing", "Immediate Addressing", "Register Addressing", "Indirect Addressing"], "a": 1}, {"q": "The fundamental link between all computer software and the Von Neumann architecture is that software must be:", "o": ["Written in C++", "Stored as binary instructions in memory and executed sequentially", "Processed by an interpreter", "Installed on a hard drive"], "a": 1}];
+<footer>Developed by <b>Saif Ali</b></footer>
+
+<script>
+/* ===== الإعداد ===== */
+const FIREBASE_URL = "https://taxi-d301e-default-rtdb.firebaseio.com";
+
+const STAGES = ["الأولى","الثانية","الثالثة","الرابعة"];
+
+const ARCH_QS = [{"q": "What is the primary function of a computer system?", "o": ["Storing data permanently", "Accepting input, processing data, and producing output", "Connecting to the internet", "Displaying graphics"], "a": 1}, {"q": "Which of the following is NOT a component of a computer system?", "o": ["Hardware", "Software", "Data", "User"], "a": 3}, {"q": "The \"brain\" of the computer, responsible for executing instructions, is the:", "o": ["Main Memory", "Arithmetic Logic Unit (ALU)", "Control Unit (CU)", "Central Processing Unit (CPU)"], "a": 3}, {"q": "Which generation of computers used Vacuum Tubes as their defining technology?", "o": ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"], "a": 0}, {"q": "Transistors were the defining technology of which computer generation?", "o": ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"], "a": 1}, {"q": "Integrated Circuits (ICs) were introduced in the:", "o": ["First Generation", "Second Generation", "Third Generation", "Fourth Generation"], "a": 2}, {"q": "The era of Personal Computing (PCs) began with the advent of:", "o": ["Vacuum Tubes", "Transistors", "Integrated Circuits (ICs)", "Microprocessors"], "a": 3}, {"q": "Fifth Generation computers are primarily associated with:", "o": ["Microprocessors", "Artificial Intelligence and Quantum Computing", "Integrated Circuits", "Vacuum Tubes"], "a": 1}, {"q": "A desktop PC is an example of a:", "o": ["Multi-User System", "Single-User System", "Supercomputer", "Mainframe"], "a": 1}, {"q": "A high-performance computer designed for a single user doing technical work is a:", "o": ["Mainframe", "Workstation", "Minicomputer", "Supercomputer"], "a": 1}, {"q": "Which type of computer is designed to support hundreds or thousands of users simultaneously for high-volume transactions?", "o": ["Workstation", "Minicomputer", "Mainframe", "Supercomputer"], "a": 2}, {"q": "The fastest and most powerful computers, used for weather forecasting and scientific modeling, are:", "o": ["Mainframes", "Supercomputers", "Workstations", "Minicomputers"], "a": 1}, {"q": "Which component is responsible for controlling the operation of the processor?", "o": ["Arithmetic and Logic Unit (ALU)", "Registers", "Control Unit (CU)", "Main Memory"], "a": 2}, {"q": "The part of the CPU that performs mathematical calculations is the:", "o": ["Control Unit (CU)", "Instruction Register (IR)", "Arithmetic and Logic Unit (ALU)", "Memory Address Register (MAR)"], "a": 2}, {"q": "What is the function of CPU registers?", "o": ["Store the operating system", "Provide long-term storage for files", "Hold data and control information temporarily during execution", "Connect the CPU to I/O devices"], "a": 2}, {"q": "Main Memory (RAM) is characterized as:", "o": ["Non-volatile", "Volatile", "Very slow", "Read-only"], "a": 1}, {"q": "What is the role of I/O Modules?", "o": ["Execute program instructions", "Perform arithmetic calculations", "Interface between the CPU/Memory and external devices", "Control the system clock"], "a": 2}, {"q": "The pathway that provides communication among the CPU, Main Memory, and I/O modules is the:", "o": ["Instruction Register", "System Interconnection Structure (Bus)", "Arithmetic Logic Unit", "Control Unit"], "a": 1}, {"q": "The foundational design for most modern computers, based on the stored- program concept, is:", "o": ["Harvard Architecture", "Von Neumann Architecture", "Modified Harvard Architecture", "RISC Architecture"], "a": 1}, {"q": "A key feature of Von Neumann Architecture is:", "o": ["Separate memories for instructions and data", "A single, unified memory for instructions and data", "The absence of a CPU", "Parallel processing only"], "a": 1}, {"q": "Which architecture uses separate buses for instructions and data?", "o": ["Von Neumann Architecture", "Harvard Architecture", "Both Von Neumann and Harvard", "Neither Von Neumann nor Harvard"], "a": 1}, {"q": "The \"Von Neumann Bottleneck\" refers to:", "o": ["The slow speed of the ALU", "The limitation of having a single bus for both instructions and data", "The volatility of main memory", "The complexity of the Control Unit"], "a": 1}, {"q": "Modern Intel and AMD processors typically use a:", "o": ["Pure Von Neumann Architecture", "Pure Harvard Architecture", "Modified Harvard Architecture", "RISC Architecture"], "a": 2}, {"q": "In a Modified Harvard Architecture, separation is achieved at the level of:", "o": ["Main Memory (RAM)", "Secondary Storage (HDD/SSD)", "CPU Caches (L1 Cache)", "System Bus"], "a": 2}, {"q": "Computer Architecture primarily deals with:", "o": ["The physical implementation of the system", "Attributes visible to the programmer", "The brand of the hardware", "The cost of the components"], "a": 1}, {"q": "The Instruction Set Architecture (ISA) is part of:", "o": ["Computer Organization", "Computer Architecture", "Computer Manufacturing", "Computer Networking"], "a": 1}, {"q": "Computer Organization deals with:", "o": ["The logical execution of a program", "The operational units and their interconnections", "The user interface design", "The programming language used"], "a": 1}, {"q": "The Stored-Program Concept means:", "o": ["Programs are stored on a hard drive", "Instructions and data are stored together in main memory", "Instructions are stored in the ALU", "Data is stored in the Control Unit"], "a": 1}, {"q": "The cycle of fetching, decoding, and executing instructions is:", "o": ["Sequential Instruction Processing", "Parallel Processing", "Pipelining", "Multitasking"], "a": 0}, {"q": "Which register holds the address of the next instruction to be executed?", "o": ["Instruction Register (IR)", "Memory Address Register (MAR)", "Program Counter (PC)", "Memory Buffer Register (MBR)"], "a": 2}, {"q": "The register that holds the instruction currently being executed is the:", "o": ["Program Counter (PC)", "Memory Address Register (MAR)", "Instruction Register (IR)", "Memory Buffer Register (MBR)"], "a": 2}, {"q": "The ALU performs which of the following types of operations?", "o": ["Only arithmetic operations", "Only logical operations", "Both arithmetic and logical operations", "Only data fetch operations"], "a": 2}, {"q": "Which component generates the control signals that coordinate the computer's operation?", "o": ["Arithmetic and Logic Unit (ALU)", "Main Memory", "Control Unit (CU)", "System Bus"], "a": 2}, {"q": "During a memory read operation, which register holds the data after it is fetched from memory?", "o": ["Memory Address Register (MAR)", "Program Counter (PC)", "Instruction Register (IR)", "Memory Buffer Register (MBR)"], "a": 3}, {"q": "The Memory Address Register (MAR) holds:", "o": ["The data to be written to memory", "The instruction being decoded", "The address of a memory location", "The result of an ALU operation"], "a": 2}, {"q": "What is the first step in the Fetch-Decode-Execute cycle?", "o": ["Decode the instruction", "Execute the instruction", "Fetch the instruction", "Increment the Program Counter"], "a": 2}, {"q": "The system bus is composed of three types of buses. They are:", "o": ["Data, Address, Control", "Input, Output, Processing", "Memory, CPU, I/O", "Primary, Secondary, Cache"], "a": 0}, {"q": "The bus that carries the memory address from the CPU is the:", "o": ["Data Bus", "Address Bus", "Control Bus", "System Bus"], "a": 1}, {"q": "The width of the Address Bus determines the:", "o": ["Speed of the CPU", "Amount of data transferred at once", "Maximum addressable memory", "Number of I/O devices"], "a": 2}, {"q": "The bus that is bidirectional is the:", "o": ["Address Bus", "Data Bus", "Control Bus", "Both b and c"], "a": 3}, {"q": "A READ signal is sent from the CPU to memory via the:", "o": ["Data Bus", "Address Bus", "Control Bus", "System Clock"], "a": 2}, {"q": "Software that manages computer hardware and provides a platform for applications is:", "o": ["Application Software", "System Software", "Utility Software", "Translator Software"], "a": 1}, {"q": "An example of System Software is:", "o": ["Microsoft Word", "Google Chrome", "Windows Operating System", "A video game"], "a": 2}, {"q": "A program that converts high-level code into machine code all at once is a(n):", "o": ["Interpreter", "Assembler", "Compiler", "Operating System"], "a": 2}, {"q": "A program that converts and executes one line of source code at a time is a(n):", "o": ["Compiler", "Assembler", "Interpreter", "Linker"], "a": 2}, {"q": "Programs like web browsers and word processors are classified as:", "o": ["System Software", "Application Software", "Utility Software", "Translator Software"], "a": 1}, {"q": "Which addressing mode has the operand value as part of the instruction itself?", "o": ["Direct Addressing", "Register Addressing", "Immediate Addressing", "Indirect Addressing"], "a": 2}, {"q": "In the instruction ADD 5, the addressing mode used is:", "o": ["Direct Addressing", "Register Addressing", "Immediate Addressing", "Indirect Addressing"], "a": 2}, {"q": "In which addressing mode does the instruction contain the exact memory address of the operand?", "o": ["Immediate Addressing", "Direct Addressing", "Register Addressing", "Indirect Addressing"], "a": 1}, {"q": "The instruction LOAD R5 uses which addressing mode?", "o": ["Immediate Addressing", "Direct Addressing", "Register Addressing", "Indirect Addressing"], "a": 2}, {"q": "The fastest addressing mode(s) for the CPU to access data is/are:", "o": ["Immediate and Direct", "Direct and Indirect", "Immediate and Register", "Register and Indirect"], "a": 2}, {"q": "An addressing mode that requires two memory accesses to get the operand is:", "o": ["Immediate Addressing", "Direct Addressing", "Register Addressing", "Indirect Addressing"], "a": 3}, {"q": "The part of a machine instruction that specifies the operation to be performed is the:", "o": ["Operand", "Opcode", "Address", "Register"], "a": 1}, {"q": "In a 16-bit instruction 0010 0011 0000 0101, the Opcode is:", "o": ["0010", "0011", "0000 0101", "The entire instruction"], "a": 0}, {"q": "The mnemonic AND R1, R2, R3 means:", "o": ["Add R2 and R3 and store in R1", "Subtract R3 from R2 and store in R1", "Perform bitwise AND on R2 and R3, store result in R1", "Perform bitwise OR on R2 and R3, store result in R1"], "a": 2}, {"q": "The mnemonic SUB R1, R2, R3 means:", "o": ["R1 = R2 + R3", "R1 = R2 AND R3", "R1 = R2 - R3", "R1 = R2 OR R3"], "a": 2}, {"q": "An instruction that changes the sequence of execution by modifying the Program Counter is a:", "o": ["Data Processing Instruction", "Logic Instruction", "Control Instruction (e.g., JUMP)", "I/O Instruction"], "a": 2}, {"q": "Which of the following is a logical operation?", "o": ["ADD", "SUB", "AND", "JUMP"], "a": 2}, {"q": "If R2 = 1010 and R3 = 1100, what is the result of AND R1, R2, R3?", "o": ["1110", "1000", "0110", "1010"], "a": 1}, {"q": "If R2 = 1010 and R3 = 1100, what is the result of OR R1, R2, R3?", "o": ["1110", "1000", "0110", "1010"], "a": 0}, {"q": "The Control Unit's operation is synchronized by the:", "o": ["ALU", "System Clock", "Data Bus", "Main Memory"], "a": 1}, {"q": "A Hardwired Control Unit is:", "o": ["Easy to modify", "Implemented with software", "Fast but inflexible", "Slow but flexible"], "a": 2}, {"q": "A Microprogrammed Control Unit uses a special memory called:", "o": ["Cache", "RAM", "Control Store", "Register File"], "a": 2}, {"q": "The binary code for instructions is stored in:", "o": ["The ALU", "The Control Unit", "Main Memory", "The System Bus"], "a": 2}, {"q": "The component that acts as an interface for data transfer between the CPU and an I/O device is the:", "o": ["MAR", "MDR", "I/O Module", "System Clock"], "a": 2}, {"q": "Which register in the CPU is used for communication with an I/O device?", "o": ["Program Counter (PC)", "Instruction Register (IR)", "I/O Buffer Register (I/OBR)", "Memory Address Register (MAR)"], "a": 2}, {"q": "The performance of a computer is largely determined by the speed of the:", "o": ["Printer", "Monitor", "CPU and Memory", "Keyboard"], "a": 2}, {"q": "The type of memory that loses its contents when power is turned off is:", "o": ["ROM", "RAM", "SSD", "Hard Disk"], "a": 1}, {"q": "A computer's main memory is typically made of:", "o": ["SRAM", "DRAM", "ROM", "Cache"], "a": 1}, {"q": "Cache memory is used to:", "o": ["Increase main memory capacity", "Store data permanently", "Speed up access to frequently used data by the CPU", "Connect to I/O devices"], "a": 2}, {"q": "In the Von Neumann architecture, the same bus is used to transfer:", "o": ["Only instructions", "Only data", "Both instructions and data", "Only addresses"], "a": 2}, {"q": "The Harvard Architecture is often used in:", "o": ["Desktop PCs", "Servers", "Microcontrollers and DSPs", "Laptops"], "a": 2}, {"q": "The ability to run multiple programs apparently simultaneously is called:", "o": ["Multiprocessing", "Multitasking", "Multithreading", "Multiprogramming"], "a": 1}, {"q": "The set of instructions that a CPU can execute is known as its:", "o": ["Computer Architecture", "Computer Organization", "Instruction Set Architecture (ISA)", "Control System"], "a": 2}, {"q": "Which of the following is a status flag set by the ALU?", "o": ["Opcode", "Operand", "Zero Flag (Z)", "Address"], "a": 2}, {"q": "The Zero Flag (Z) is set when the result of an operation is:", "o": ["Positive", "Negative", "Zero", "An overflow"], "a": 2}, {"q": "The Carry Flag (C) is useful after which type of operation?", "o": ["Logical AND", "Logical OR", "Arithmetic Addition/Subtraction", "Data Move"], "a": 2}, {"q": "The Overflow Flag (V) is used for:", "o": ["Unsigned arithmetic", "Logical operations", "Signed arithmetic", "Data transfer operations"], "a": 2}, {"q": "The step where the Control Unit figures out what the instruction means is called:", "o": ["Fetch", "Decode", "Execute", "Writeback"], "a": 1}, {"q": "The final step of an instruction cycle, where results are stored, is often called:", "o": ["Fetch", "Decode", "Execute", "Writeback"], "a": 3}, {"q": "A bus that allows data to travel in both directions is called:", "o": ["Unidirectional", "Bidirectional", "Simplex", "Half-duplex"], "a": 1}, {"q": "The width of a 64-bit data bus means it can transfer:", "o": ["64 bytes at a time", "64 bits at a time", "64 million bits per second", "64 addresses at a time"], "a": 1}, {"q": "The primary memory in a computer system is also known as:", "o": ["Secondary Storage", "RAM", "Hard Disk", "USB Drive"], "a": 1}, {"q": "Which of the following is a non-volatile memory?", "o": ["DRAM", "SRAM", "Cache", "ROM"], "a": 3}, {"q": "A device driver is a type of:", "o": ["Application Software", "System Software", "Utility Software", "Translator Software"], "a": 1}, {"q": "The instruction JUMP 4000 changes the value in the:", "o": ["Instruction Register (IR)", "Memory Address Register (MAR)", "Program Counter (PC)", "Memory Buffer Register (MBR)"], "a": 2}, {"q": "In the instruction ADD (200), the parentheses indicate the use of:", "o": ["Immediate Addressing", "Direct Addressing", "Register Addressing", "Indirect Addressing"], "a": 3}, {"q": "Which of the following is an advantage of Immediate Addressing?", "o": ["Flexibility", "No memory access for the operand", "Allows for large address spaces", "Requires only one memory access"], "a": 1}, {"q": "The binary value 0101 in an opcode field might be decoded as:", "o": ["ADD", "SUB", "AND", "JUMP"], "a": 2}, {"q": "The binary value 0001 in an opcode field might be decoded as:", "o": ["ADD", "SUB", "AND", "OR"], "a": 1}, {"q": "The part of the CPU that contains the ALU and registers is sometimes called the:", "o": ["Control Unit", "Datapath", "System Bus", "I/O Module"], "a": 1}, {"q": "The concept that a computer can be reprogrammed for different tasks by loading new software is enabled by the:", "o": ["Speed of the CPU", "Stored-Program Concept", "Size of the Hard Disk", "Presence of the System Bus"], "a": 1}, {"q": "Which component is NOT typically part of the CPU?", "o": ["Control Unit (CU)", "Arithmetic Logic Unit (ALU)", "Registers", "Main Memory (RAM)"], "a": 3}, {"q": "The fetch cycle begins by loading the address from the PC into the:", "o": ["IR", "MAR", "MDR", "ALU"], "a": 1}, {"q": "The time taken to complete one fetch-decode-execute cycle is determined by the:", "o": ["CPU Clock Speed", "Monitor Refresh Rate", "Hard Disk Speed", "Keyboard Input Speed"], "a": 0}, {"q": "A 32-bit address bus can address how many unique memory locations?", "o": ["32", "2^32 (4,294,967,296)", "32 billion", "1024"], "a": 1}, {"q": "The primary goal of using a Harvard Architecture is to:", "o": ["Reduce cost", "Simplify programming", "Allow parallel instruction and data access", "Use a unified memory"], "a": 2}, {"q": "In a processor with a Modified Harvard Architecture, the main memory is typically:", "o": ["Split into Instruction RAM and Data RAM", "Unified for instructions and data", "Non-existent", "Only for I/O operations"], "a": 1}, {"q": "The instruction LOAD 100 (which loads the value 100 into a register) uses:", "o": ["Direct Addressing", "Immediate Addressing", "Register Addressing", "Indirect Addressing"], "a": 1}, {"q": "The fundamental link between all computer software and the Von Neumann architecture is that software must be:", "o": ["Written in C++", "Stored as binary instructions in memory and executed sequentially", "Processed by an interpreter", "Installed on a hard drive"], "a": 1}];
+
+/* لإضافة ملزمة: ضع ملف الـ PDF في نفس مجلد index.html وأضف {t:"العنوان", f:"اسم الملف.pdf"} داخل notes.
+   لإضافة أسئلة مادة جديدة لاحقاً: ضع مصفوفة الأسئلة في qs
+   بالشكل {q:"السؤال", o:["أ","ب","ج","د"], a:رقم الإجابة الصحيحة 0-3}
+   وكل مادة لها node خاص بها حتى تكون نتائجها منفصلة. */
+const SUBJECTS = [
+  {id:"arch",    stage:2, name:"معمارية الحاسوب", en:"Computer Architecture", icon:"🖥️", node:"results",         qs:ARCH_QS, notes:[]},
+  {id:"math",    stage:2, name:"الرياضيات",        en:"Mathematics",           icon:"➗", node:"results_math",    qs:null, notes:[{t:"المحاضرة 3 – الاحتمالات (Probability)", f:"Math_Lecture3_Probability_Explained.pdf"}]},
+  {id:"elec",    stage:2, name:"الإلكترونيك",      en:"Electronics",           icon:"🔌", node:"results_elec",    qs:null, notes:[]},
+  {id:"prog",    stage:2, name:"البرمجة",          en:"Programming",           icon:"💻", node:"results_prog",    qs:null, notes:[]},
+  {id:"eng",     stage:2, name:"الإنكليزي",        en:"English",               icon:"🔤", node:"results_eng",     qs:null, notes:[]},
+  {id:"baath",   stage:2, name:"جرائم حزب البعث",  en:"Baath Party Crimes",    icon:"📜", node:"results_baath",   qs:null, notes:[]}
+];
 
 const $ = id => document.getElementById(id);
-const show = id => { ["vStart","vQuiz","vResult"].forEach(v => $(v).classList.toggle("hide", v !== id)); window.scrollTo(0,0); };
-let state = {name:"", order:[], ans:{}, cur:0, t0:0, last:null, showAll:false};
+const show = id => { ["vHome","vMode","vStart","vQuiz","vResult"].forEach(v => $(v).classList.toggle("hide", v !== id)); window.scrollTo(0,0); };
+let state = {subj:null, name:"", order:[], ans:{}, cur:0, t0:0, last:null, showAll:false};
+let stageSel = null;
+
+/* ===== الرئيسية ===== */
+function drawStages(){
+  const box=$("stages"); box.replaceChildren();
+  STAGES.forEach((n,i)=>{
+    const b=document.createElement("button"); b.className="stg"+(stageSel===i+1?" on":"");
+    b.textContent="المرحلة "+n; b.onclick=()=>{ stageSel=i+1; drawStages(); drawSubjects(); };
+    box.appendChild(b);
+  });
+}
+const hasQ=s=>!!(s.qs&&s.qs.length), hasN=s=>!!(s.notes&&s.notes.length);
+function drawSubjects(){
+  const list=SUBJECTS.filter(s=>s.stage===stageSel), box=$("subjects"); box.replaceChildren();
+  $("subjCard").classList.remove("hide");
+  if(!list.length){ box.textContent="لم تُضف مواد لهذه المرحلة بعد."; return; }
+  list.forEach(s=>{
+    const ok=hasQ(s)||hasN(s), b=document.createElement("button");
+    b.className="sj"+(ok?"":" soon");
+    const bd=document.createElement("span"); bd.className="bd"; bd.textContent=ok?"متاح":"قريباً";
+    const ic=document.createElement("span"); ic.className="ic"; ic.textContent=s.icon;
+    const nm=document.createElement("b"); nm.textContent=s.name;
+    const en=document.createElement("small"); en.textContent=s.en+(hasQ(s)?` · ${s.qs.length} Q`:"")+(hasN(s)?" · PDF":"");
+    b.append(bd,ic,nm,en);
+    if(ok) b.onclick=()=>openMode(s); else b.disabled=true;
+    box.appendChild(b);
+  });
+}
+function openMode(s){
+  state.subj=s; $("mTitle").textContent=s.icon+" "+s.name;
+  $("notesCard").classList.add("hide"); $("mNotes").classList.remove("on");
+  $("mNotesD").textContent=hasN(s)?`${s.notes.length} ملف PDF`:"قريباً";
+  $("mQuizD").textContent=hasQ(s)?`${s.qs.length} سؤال`:"قريباً";
+  $("mNotes").disabled=!hasN(s); $("mQuiz").disabled=!hasQ(s);
+  show("vMode");
+}
+function showNotes(){
+  const s=state.subj, box=$("notesList"); box.replaceChildren();
+  if(s.notes.length===1){ window.open(encodeURI(s.notes[0].f),"_blank","noopener"); return; }
+  s.notes.forEach(n=>{
+    const d=document.createElement("div"); d.className="note-i";
+    const t=document.createElement("b"); t.textContent=n.t; t.style.flex="1";
+    const o=document.createElement("a"); o.className="btn"; o.textContent="فتح"; o.href=encodeURI(n.f); o.target="_blank"; o.rel="noopener";
+    const dl=document.createElement("a"); dl.className="btn ghost"; dl.textContent="تنزيل"; dl.href=encodeURI(n.f); dl.setAttribute("download","");
+    d.append(t,o,dl); box.appendChild(d);
+  });
+  $("notesCard").classList.remove("hide"); $("mNotes").classList.add("on");
+}
+function openSubject(s){
+  state.subj=s;
+  $("sTitle").textContent=s.icon+" "+s.name;
+  $("sSub").textContent=`${s.qs.length} سؤال اختيار من متعدد. تقدر تنهي الاختبار في أي وقت، والنتيجة تُحسب على الأسئلة اللي جاوبتها.`;
+  $("lbStart").textContent="جاري التحميل…";
+  show("vStart"); refreshStartBoard();
+}
 
 /* ===== التخزين ===== */
-async function loadResults(){
+async function loadResults(node){
   if(!FIREBASE_URL){
     $("cfgNote").classList.remove("hide");
-    try{ return JSON.parse(localStorage.getItem("quiz_results")||"[]"); }catch(e){ return []; }
+    try{ return JSON.parse(localStorage.getItem("quiz_"+node)||"[]"); }catch(e){ return []; }
   }
-  const r = await fetch(`${FIREBASE_URL}/${TOTAL_NODE}.json`);
+  const r = await fetch(`${FIREBASE_URL}/${node}.json`);
   if(!r.ok) throw new Error("load");
   const d = await r.json();
   return d ? Object.values(d) : [];
 }
-async function saveResult(res){
+async function saveResult(node,res){
   if(!FIREBASE_URL){
-    let a=[]; try{ a=JSON.parse(localStorage.getItem("quiz_results")||"[]"); }catch(e){}
-    a.push(res); try{ localStorage.setItem("quiz_results", JSON.stringify(a)); }catch(e){}
+    let a=[]; try{ a=JSON.parse(localStorage.getItem("quiz_"+node)||"[]"); }catch(e){}
+    a.push(res); try{ localStorage.setItem("quiz_"+node, JSON.stringify(a)); }catch(e){}
     return;
   }
-  const r = await fetch(`${FIREBASE_URL}/${TOTAL_NODE}.json`,{method:"POST",body:JSON.stringify(res)});
+  const r = await fetch(`${FIREBASE_URL}/${node}.json`,{method:"POST",body:JSON.stringify(res)});
   if(!r.ok) throw new Error("save");
 }
 
@@ -167,7 +305,7 @@ function renderBoard(el, list, opts={}){
   t.appendChild(tb); el.replaceChildren(t);
 }
 async function refreshStartBoard(){
-  try{ renderBoard($("lbStart"), ranked(await loadResults())); }
+  try{ renderBoard($("lbStart"), ranked(await loadResults(state.subj.node))); }
   catch(e){ $("lbStart").textContent="تعذّر تحميل لوحة الترتيب."; }
 }
 
@@ -177,11 +315,12 @@ function start(){
   const n=$("name").value.trim().replace(/\s+/g," ");
   if(n.length<2){ $("nameErr").textContent="اكتب اسمك (حرفين على الأقل)."; return; }
   $("nameErr").textContent="";
-  state={name:n, order:shuffle(QS.map((_,i)=>i)), ans:{}, cur:0, t0:Date.now(), last:null, showAll:false};
-  $("who").textContent=n; show("vQuiz"); draw();
+  const QS=state.subj.qs;
+  state={...state, name:n, order:shuffle(QS.map((_,i)=>i)), ans:{}, cur:0, t0:Date.now(), last:null, showAll:false};
+  $("who").textContent=n+" · "+state.subj.name; show("vQuiz"); draw();
 }
 function draw(){
-  const i=state.order[state.cur], q=QS[i];
+  const QS=state.subj.qs, i=state.order[state.cur], q=QS[i];
   $("qText").textContent=q.q;
   const box=$("opts"); box.replaceChildren();
   q.o.forEach((o,k)=>{
@@ -200,7 +339,7 @@ function draw(){
   $("btnNext").disabled=state.cur===QS.length-1;
 }
 async function finish(){
-  const answered=Object.keys(state.ans).length;
+  const QS=state.subj.qs, answered=Object.keys(state.ans).length;
   if(!answered){ alert("جاوب على سؤال واحد على الأقل قبل إنهاء الاختبار."); return; }
   const msg = answered<QS.length
     ? `أجبت على ${answered} من ${QS.length} سؤال. تبي تنهي الاختبار؟ النتيجة تُحسب على ${answered} سؤال.`
@@ -209,6 +348,7 @@ async function finish(){
   let correct=0; Object.entries(state.ans).forEach(([i,k])=>{ if(QS[i].a===k) correct++; });
   const res={name:state.name, correct, answered, secs:Math.round((Date.now()-state.t0)/1000), ts:Date.now()};
   state.last=res;
+  $("rSubj").textContent=state.subj.icon+" "+state.subj.name;
   $("rName").textContent=state.name;
   $("rScore").textContent=correct; $("rOut").textContent=`من ${answered}`;
   const pct=Math.round(correct/answered*100), m=Math.floor(res.secs/60), s=res.secs%60;
@@ -216,12 +356,12 @@ async function finish(){
   $("rRank").textContent="جاري حفظ النتيجة…";
   $("review").classList.add("hide");
   show("vResult");
-  try{ await saveResult(res); }catch(e){ $("rRank").textContent="تعذّر حفظ النتيجة في لوحة الترتيب."; return; }
+  try{ await saveResult(state.subj.node,res); }catch(e){ $("rRank").textContent="تعذّر حفظ النتيجة في لوحة الترتيب."; return; }
   showBoard();
 }
 async function showBoard(){
   try{
-    const list=ranked(await loadResults());
+    const list=ranked(await loadResults(state.subj.node));
     const me=list.find(r=>r.name.trim().toLowerCase()===state.name.toLowerCase());
     const pos=list.indexOf(me)+1;
     $("rRank").textContent=`ترتيبك: ${pos} من ${list.length} طالب`;
@@ -230,7 +370,7 @@ async function showBoard(){
   }catch(e){ $("lbResult").textContent="تعذّر تحميل لوحة الترتيب."; }
 }
 function review(){
-  const box=$("review"); box.replaceChildren();
+  const QS=state.subj.qs, box=$("review"); box.replaceChildren();
   state.order.filter(i=>i in state.ans).forEach(i=>{
     const q=QS[i], ok=state.ans[i]===q.a, d=document.createElement("div"); d.className="rev";
     const t=document.createElement("div"); t.className="t"; t.textContent=q.q;
@@ -244,13 +384,19 @@ function review(){
 
 $("btnStart").onclick=start;
 $("name").addEventListener("keydown",e=>{ if(e.key==="Enter") start(); });
+$("btnHome").onclick=()=>openMode(state.subj);
+$("btnBackHome").onclick=()=>show("vHome");
+$("mNotes").onclick=showNotes;
+$("mQuiz").onclick=()=>openSubject(state.subj);
+$("btnMenu").onclick=()=>show("vHome");
 $("btnPrev").onclick=()=>{ state.cur--; draw(); };
 $("btnNext").onclick=()=>{ state.cur++; draw(); };
 $("btnFinish").onclick=finish;
 $("btnAll").onclick=()=>{ state.showAll=!state.showAll; showBoard(); };
 $("btnRev").onclick=review;
-$("btnAgain").onclick=()=>{ show("vStart"); refreshStartBoard(); };
-refreshStartBoard();
+$("btnAgain").onclick=()=>openSubject(state.subj);
+drawStages();
+if(!FIREBASE_URL) $("cfgNote").classList.remove("hide");
 </script>
 </body>
 </html>
