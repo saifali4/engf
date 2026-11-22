@@ -271,11 +271,15 @@ let ans = [];   // لكل سؤال: رقم الخيار | "s" (تخطي) | null 
 /* ===== قاعدة البيانات (Firebase إذا موجود، وإلا localStorage) =====
    scores   : لوحة المتصدرين (محاولة منتهية)
    attempts : كل المحاولات + التقدم (الاسم، رقم المحاولة، الإجابات، الحالة) */
+let dbErr = false;   // true إذا آخر عملية مع قاعدة البيانات فشلت
 const base = () => FIREBASE_URL.replace(/\/$/, "");
 async function dbAll(col){
   if (FIREBASE_URL){
-    try{ const r = await fetch(`${base()}/${col}.json`); return Object.values(await r.json() || {}); }
-    catch(e){ return []; }
+    try{
+      const r = await fetch(`${base()}/${col}.json`);
+      if (!r.ok){ dbErr = true; return []; }
+      return Object.values(await r.json() || {});
+    }catch(e){ dbErr = true; return []; }
   }
   let out = [];
   try{ out = Object.values(JSON.parse(localStorage.getItem("mcq_" + col) || "{}")); }catch(e){}
@@ -286,7 +290,10 @@ async function dbAll(col){
 }
 async function dbPut(col, id, obj){
   if (FIREBASE_URL){
-    try{ await fetch(`${base()}/${col}/${id}.json`, {method:"PUT", body: JSON.stringify(obj)}); }catch(e){}
+    try{
+      const r = await fetch(`${base()}/${col}/${id}.json`, {method:"PUT", body: JSON.stringify(obj)});
+      dbErr = !r.ok;
+    }catch(e){ dbErr = true; }
     return;
   }
   try{
@@ -321,7 +328,10 @@ async function renderBoard(me){
       <div class="nm">${esc(e.name)}${e.score===Q.length?' ⭐':''}${e.early?'<span class="tg">(أنهى مبكراً)</span>':''}</div>
       <div class="pt">${e.score} / ${Q.length}</div></div>`).join("")
     : `<div class="empty">لا توجد نتائج بعد</div>`;
-  $("lbnote").textContent = FIREBASE_URL ? "" : "ملاحظة: النتائج محفوظة على هذا الجهاز فقط.";
+  const ln = $("lbnote");
+  if (!FIREBASE_URL){ ln.textContent = "ملاحظة: النتائج محفوظة على هذا الجهاز فقط."; ln.style.color = ""; }
+  else if (dbErr){ ln.textContent = "⚠ تعذّر الاتصال بقاعدة البيانات — تأكد من Rules في Firebase"; ln.style.color = "var(--bad)"; }
+  else { ln.textContent = "✓ متصل بقاعدة البيانات"; ln.style.color = "var(--ok)"; }
 }
 
 /* ===== سير الاختبار ===== */
